@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace ="com.bit.springBoard2.dao.IDao">
+	<insert id="write">
+		insert into tblBoard(id, name, title, content, hit)values(tblBoardSeq.nextval, #{name}, #{title}, #{content}, 0)
+	</insert>
+	
+	<select id="list" resultType="com.bit.springBoard2.dto.BoardDTO">
+		select * from tblBoard order by id desc
+	</select>
+	
+	<select id="contentView" resultType="com.bit.springBoard2.dto.BoardDTO">
+		select * from tblBoard where id = #{id}
+	</select>
+	
+	<update id="modify">
+		update tblBoard set name = #{name}, title = #{title}, content = #{content} where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from tblBoard where id = #{id}
+	</delete>
+	
+	<update id="upHit">
+		update tblBoard set hit = hit + 1 where id = #{id}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
